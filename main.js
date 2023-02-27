@@ -77,7 +77,7 @@ function defineSize(country_name, city_name) {
       "--city-container-width",
       180 + (cityArray.length - 5) * 10 + "px"
     );
-    document.documentElement.style.setProperty("--city-font-size", "30px");
+    document.documentElement.style.setProperty("--city-font-size", "25px");
   } else if (cityArray.length > 14) {
     document.documentElement.style.setProperty(
       "--city-container-width",
