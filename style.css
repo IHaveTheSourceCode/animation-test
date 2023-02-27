@@ -1,0 +1,526 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+
+* {
+  margin: 0;
+}
+
+:root {
+  --clr-yellow: #fcda16;
+  --clr-white: #ffffff;
+  --clr-black: #000000;
+
+  --font: "Rubik", sans-serif;
+
+  --country-container-width: 69px;
+  --city-container-width: 100px;
+  --city-font-size: 45px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--clr-black);
+  color: var(--clr-black);
+  font-family: var(--font);
+}
+
+#container {
+  width: 300px;
+  height: 600px;
+  position: absolute;
+  overflow: hidden;
+}
+
+#container::before {
+  pointer-events: none;
+  display: block;
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 1px solid var(--clr-white);
+  z-index: 10;
+  background-color: transparent;
+  animation: blankScreen 0.6s linear 15s forwards;
+}
+
+#overlay-start {
+  background-color: var(--clr-white);
+  z-index: 1;
+  position: absolute;
+  width: 300px;
+  height: 1200px;
+  animation: sliderUpFirstPhase 0.25s linear 0.2s forwards,
+    sliderUpSecondPhase 0.25s linear 1.75s forwards;
+}
+
+#overlay-start div:nth-child(n) {
+  width: 100%;
+  height: 600px;
+}
+
+#overlay-start div:nth-child(2) {
+  background-color: var(--clr-yellow);
+}
+
+#logo {
+  background-color: var(--clr-yellow);
+  width: 96px;
+  padding: 19px;
+  padding-bottom: 16px;
+  z-index: 1;
+  top: 315px;
+  left: -150px;
+  position: absolute;
+  animation: slideInLogo 0.4s cubic-bezier(0, 0.85, 0.75, 1) 0.6s forwards,
+    slideUpLogo 0.5s cubic-bezier(0, 0.8, 0.75, 1) 1.2s forwards;
+}
+
+#opt-out-icon-wrapper {
+  z-index: 1;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+#opt-out-icon-wrapper:hover {
+  cursor: pointer;
+}
+
+#opt-out-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 6px;
+  width: fit-content;
+}
+
+.opt-out-rectangle {
+  width: 8px;
+  height: 2px;
+  background-color: var(--clr-white);
+}
+
+#images {
+  display: flex;
+  position: absolute;
+}
+
+.image {
+  height: 600px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#first-image {
+  animation: zoomImage 4.3s linear 1.9s forwards;
+}
+
+#second-image {
+  animation: slideSecondImage 0.3s cubic-bezier(0.25, 1, 0.5, 1) 5.8s forwards,
+    zoomSecondImage 4.3s linear 6.1s forwards;
+}
+
+#third-image {
+  animation: slideThirdImage 0.6s cubic-bezier(0.25, 1, 0.5, 1) 10.1s forwards,
+    zoomThirdImage 4.3s linear 10.7s forwards;
+}
+
+#place-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transform: translate(36px, 356px);
+  height: 61px;
+}
+
+#country-container {
+  width: 0px;
+  margin-bottom: -2px;
+  background-color: var(--clr-white);
+  overflow: hidden;
+  animation: showCountryBar 0.3s cubic-bezier(0, 0.85, 0.75, 1) 2.2s forwards,
+    showCountryBar 0.3s cubic-bezier(0, 0.85, 0.75, 1) 5.4s forwards reverse,
+    showCountryBar 0.3s cubic-bezier(0, 0.85, 0.75, 1) 6s forwards,
+    showCountryBar 0.3s cubic-bezier(0, 0.85, 0.75, 1) 9.8s forwards reverse,
+    showCountryBar 0.3s cubic-bezier(0, 0.85, 0.75, 1) 10.2s forwards,
+    showCountryBar 0.3s cubic-bezier(0, 0.85, 0.75, 1) 15s forwards reverse;
+}
+
+#country {
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 16px;
+  transform: translateY(15px);
+  animation: showCountryName 0.2s ease 2.4s forwards,
+    slideCountryUp 0.2s ease 5.2s forwards,
+    showCountryName 0.2s ease 6.2s forwards,
+    slideCountryUp 0.2s ease 9.6s forwards,
+    showCountryName 0.2s ease 10.4s forwards,
+    slideCountryUp 0.2s ease 14.8s forwards;
+}
+
+#city-container {
+  width: 0;
+  background-color: var(--clr-yellow);
+  overflow: hidden;
+  animation: showCityBar 0.2s cubic-bezier(0, 0.85, 0.75, 1) 2.5s forwards,
+    showCityBar 0.2s cubic-bezier(0, 0.85, 0.75, 1) 5.6s forwards reverse,
+    showCityBar 0.2s cubic-bezier(0, 0.85, 0.75, 1) 6.3s forwards,
+    showCityBar 0.2s cubic-bezier(0, 0.85, 0.75, 1) 10s forwards reverse,
+    showCityBar 0.2s cubic-bezier(0, 0.85, 0.75, 1) 10.5s forwards,
+    showCityBar 0.2s cubic-bezier(0, 0.85, 0.75, 1) 15.2s forwards reverse;
+}
+
+#city {
+  padding-left: 12px;
+  padding-right: 13px;
+  font-size: var(--city-font-size);
+  line-height: 45px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  transform: translateY(40px);
+  animation: showCityName 0.2s ease-out 2.8s forwards,
+    slideCityUp 0.2s ease-out 5.4s forwards,
+    showCityName 0.2s ease-out 6.6s forwards,
+    slideCityUp 0.2s ease-out 9.8s forwards,
+    showCityName 0.2s ease-out 10.8s forwards,
+    slideCityUp 0.2s ease-out 15s forwards;
+}
+
+#price-container {
+  transform: translate(93px, 380px);
+  overflow: hidden;
+}
+
+#price-wrapper {
+  transform: translateY(35px);
+  animation: showPrice 0.2s cubic-bezier(0, 0.85, 0.75, 1) 2.5s forwards,
+    slidePriceUp 0.2s cubic-bezier(0, 0.85, 0.75, 1) 5.4s forwards,
+    showPrice 0.2s cubic-bezier(0, 0.85, 0.75, 1) 6.3s forwards,
+    slidePriceUp 0.2s cubic-bezier(0, 0.85, 0.75, 1) 9.8s forwards,
+    showPrice 0.2s cubic-bezier(0, 0.85, 0.75, 1) 10.5s forwards,
+    slidePriceUp 0.2s cubic-bezier(0, 0.85, 0.75, 1) 15s forwards;
+}
+
+#label {
+  font-size: 15px;
+  color: var(--clr-yellow);
+}
+
+#price {
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--clr-yellow);
+  line-height: 17px;
+}
+
+#book-btn {
+  width: 155px;
+  height: 45px;
+  padding-right: 16px;
+  background-color: var(--clr-white);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  transform: translate(393px, 385px);
+  border: none;
+  animation: buttonSlide 0.3s cubic-bezier(0, 0.85, 0.75, 1) 2.5s forwards;
+}
+
+#book-btn:hover {
+  cursor: pointer;
+  background-color: rgb(255, 235, 235);
+}
+
+#horizontal-line {
+  width: 0;
+  height: 3px;
+  background-color: var(--clr-yellow);
+  position: absolute;
+  left: 36px;
+  top: 502px;
+  animation: spawnHorizontalLine 0.3s cubic-bezier(0, 0.85, 0.75, 1) 2.6s
+    forwards;
+}
+
+#book-btn::after {
+  content: "";
+  position: absolute;
+  left: 124px;
+  top: 20px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--clr-yellow);
+  transform: rotate(-90deg);
+}
+
+#boxes-container {
+  width: 50px;
+  height: 10px;
+  display: flex;
+  justify-content: space-between;
+  transform: translate(36px, 465px);
+}
+
+.box-container {
+  width: 10px;
+  height: 10px;
+  overflow: hidden;
+  animation: boxesSlideUp 0.2s cubic-bezier(0, 0.85, 0.75, 1) 1.85s forwards;
+}
+
+.box-swiper {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+}
+
+.first-swiper {
+  transform: translateX(-10px);
+  animation: swipeBox 0.3s cubic-bezier(0, 0.85, 0.75, 1) 5.85s forwards;
+}
+
+.second-swiper {
+  transform: translateX(-20px);
+  animation: secondSwipe 0.3s cubic-bezier(0, 0.85, 0.75, 1) 5.85s forwards,
+    thirdSwipe 0.3s cubic-bezier(0, 0.85, 0.75, 1) 10.1s forwards;
+}
+
+.third-swiper {
+  transform: translateX(-10px);
+  animation: swipeBox 0.3s cubic-bezier(0, 0.85, 0.75, 1) 10.1s forwards;
+}
+
+.white-box,
+.yellow-box {
+  width: 10px;
+  height: 10px;
+}
+
+.white-box {
+  background-color: var(--clr-white);
+}
+
+.yellow-box {
+  background-color: var(--clr-yellow);
+}
+
+@keyframes slideInLogo {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(185px);
+  }
+}
+
+@keyframes slideUpLogo {
+  0% {
+    transform: translate(185px, 0);
+  }
+  100% {
+    transform: translate(185px, -315px);
+  }
+}
+
+@keyframes sliderUpFirstPhase {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-600px);
+  }
+}
+
+@keyframes sliderUpSecondPhase {
+  0% {
+    transform: translateY(-600px);
+  }
+  100% {
+    transform: translateY(-1200px);
+  }
+}
+
+@keyframes boxesSlideUp {
+  0% {
+  }
+  100% {
+    transform: translateY(-40px);
+  }
+}
+
+@keyframes showCountryBar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: var(--country-container-width);
+  }
+}
+
+@keyframes showCityBar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: var(--city-container-width);
+  }
+}
+
+@keyframes showCountryName {
+  0% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes showCityName {
+  0% {
+    transform: translateY(45px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes buttonSlide {
+  0% {
+    transform: translate(393px, 385px);
+  }
+  100% {
+    transform: translate(93px, 385px);
+  }
+}
+
+@keyframes spawnHorizontalLine {
+  0% {
+  }
+  100% {
+    width: 74px;
+  }
+}
+
+@keyframes showPrice {
+  0% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomImage {
+  0% {
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes slideSecondImage {
+  0% {
+  }
+  100% {
+    transform: translateX(-300px);
+  }
+}
+
+@keyframes slideThirdImage {
+  0% {
+  }
+  100% {
+    transform: translateX(-600px);
+  }
+}
+
+@keyframes zoomSecondImage {
+  0% {
+    transform: translateX(-300px);
+  }
+  100% {
+    transform: translateX(-300px) scale(1.1);
+  }
+}
+
+@keyframes zoomThirdImage {
+  0% {
+    transform: translateX(-600px);
+  }
+  100% {
+    transform: translateX(-600px) scale(1.1);
+  }
+}
+
+@keyframes blankScreen {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: var(--clr-white);
+  }
+}
+
+@keyframes swipeBox {
+  0% {
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes secondSwipe {
+  0% {
+    transform: translate(-20px);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes thirdSwipe {
+  0% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideCountryUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes slideCityUp {
+  0% {
+  }
+  100% {
+    transform: translateY(-45px);
+  }
+}
+
+@keyframes slidePriceUp {
+  0% {
+  }
+  100% {
+    transform: translateY(-45px);
+  }
+}
