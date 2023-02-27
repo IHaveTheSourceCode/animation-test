@@ -6,7 +6,7 @@ const adsObj = {
       price: "399",
       currency: "USD",
       priceText: "from",
-      imgURL: "http://rekrutacjartb.pl/developer_vip/images/warsaw.jpg",
+      imgURL: "images/warsaw.jpg",
     },
     {
       city: "Madrid",
@@ -14,7 +14,7 @@ const adsObj = {
       price: "295",
       currency: "USD",
       priceText: "from",
-      imgURL: "http://rekrutacjartb.pl/developer_vip/images/madrid.jpg",
+      imgURL: "images/madrid.jpg",
     },
     {
       city: "Berlin",
@@ -22,7 +22,7 @@ const adsObj = {
       price: "350",
       currency: "USD",
       priceText: "from",
-      imgURL: "http://rekrutacjartb.pl/developer_vip/images/berlin.jpg",
+      imgURL: "images/berlin.jpg",
     },
   ],
 };
